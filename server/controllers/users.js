@@ -1,6 +1,16 @@
-var models = require('../models');
+const models = require('../models');
 
 module.exports = {
-  get: function (req, res) {},
-  post: function (req, res) {}
+  get: (req, res) => {
+    models.users.getAll((err, results) => {
+      res.json(results);
+    });
+  },
+  post: (req, res) => {
+    let params = [ req.body.username ];
+    console.log(params);
+    models.users.create(params, (err, results) => {
+      res.json(results);
+    });
+  }
 };

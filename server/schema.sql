@@ -1,12 +1,22 @@
+drop database chat;
 CREATE DATABASE chat;
 
 USE chat;
 
-CREATE TABLE messages (
-  /* Describe your table here.*/
+CREATE TABLE users(
+  id int(16) not null auto_increment,
+  name varchar(25),
+  primary key (id)
 );
 
-/* Create other tables and define schemas for them here! */
+CREATE TABLE messages (
+  id int(16) not null auto_increment,
+  text varchar(255),
+  roomname varchar(30) not null,
+  userid int(16) not null,
+  primary key (id),
+  foreign key (userid) references users(id) on update cascade on delete cascade
+);
 
 
 
